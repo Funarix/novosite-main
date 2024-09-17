@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <title>{% block aba %}Template base{% endblock %}</title>
+</head>
+<body>
+    <!-- Responsive navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #68076c;">
+        <div class="container px-5">
+            <a class="navbar-brand" href="{% url 'home' %}">TaskNow</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                    class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'home' %}">Página Inicial</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'sobre' %}">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'contato' %}">Contato</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{% url 'logout' %}">Logout</a></li>
+                    <li class="nav-item">
+                        <span class="nav-link">Olá, {{ user.first_name }}!!!</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Page Content-->
+    <div class="container px-4 px-lg-5">
+        
+        <!-- Call to Action-->
+        <div class="card text-white my-5 py-4 text-center" style="background-color: #68076c">
+            <div class="card-body"><p class="text-white m-0">{% block titulo %}Seja bem-vindo(a) ao TaskNow, um gerenciador de tarefas para facilitar sua vida!{% endblock %}</p></div>
+        </div>
+        <!-- Content Row-->
+        <div class="row gx-4 gx-lg-5">
+            {% block conteudo %}
+            <div class="col-md-4 mb-5">
+                <div class="card h-100" style="background-color: #D3D3D3;">
+                    <div class="card-body" style="background-color: #FFFFFF;">
+                        <h2 class="card-title">Inserir Tarefas</h2>
+                        <p class="card-text">Insira uma nova tarefa.</p>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'lancar' %}" style="background-color: #68076c">Clique aqui</a></div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-5">
+                <div class="card h-100" style="background-color: #D3D3D3;">
+                    <div class="card-body" style="background-color: #FFFFFF;">
+                        <h2 class="card-title">Alterar Tarefas</h2>
+                        <p class="card-text">Altere as informações referentes a uma tarefa específica.</p>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'alterar' %}" style="background-color: #68076c">Clique aqui</a></div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-5">
+                <div class="card h-100" style="background-color: #D3D3D3;">
+                    <div class="card-body" style="background-color: #FFFFFF;">
+                        <h2 class="card-title">Visualizar Tarefas</h2>
+                        <p class="card-text">Veja quais são as suas tarefas pendentes</p>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'visualizar' %}" style="background-color: #68076c">Clique aqui</a></div>
+                </div>
+            </div>
+            {% endblock %}
+        </div>
+    </div>
+    <!-- Footer-->
+    <footer class="fixed-bottom" style="background-color: #68076c;">
+        <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; TaskNow 2024</p></div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+</body>
+</html>

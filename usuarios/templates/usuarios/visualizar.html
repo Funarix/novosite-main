@@ -1,0 +1,51 @@
+{% extends 'usuarios/base.html' %}
+
+{% block aba %}Visualizar Tarefas{% endblock %}
+
+{% block titulo %}Visualizar Tarefas{% endblock %}
+
+{% block conteudo %}
+<h3>Visualização de tarefas registradas</h3>
+<hr>
+<form action = "{% url 'visualizar' %}" method = "POST">
+    {% csrf_token %}
+    <div class = "filter">
+        <label for = "disciplinaName">Filtrar por Tarefa:</label>
+        <select name = "disciplina">
+            <option>Todas as tarefas</option>
+            {% for campo in lista_notas %}
+                <option>{{ campo.disciplina }}</option>
+            {% endfor %}
+        </select>
+        <button type = "submit" class = "btn btn-primary">Filtrar</button>
+    </div>
+</form>
+
+<div class = "table-responsive">
+    <table class = "table table-striped">
+        <tr>
+            <th>Nome</th>
+            <th>Tarefa</th>
+            <th>Data atual</th>
+            <th>Data Limite</th>
+            <th>Obeservações</th>
+            
+        </tr>
+        {% for campo in lista_notas %}
+        <tr>
+            <td>{{ user.first_name }}</td>
+            <td>{{ campo.disciplina }}</td>
+            <td>{{ campo.nota_atividades }}</td>
+            <td>{{ campo.nota_trabalho }}</td>
+            <td>{{ campo.nota_prova }}</td>
+            <td>{{ campo.media }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan = "6">Nenhum registro encontrado.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<hr>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'usuarios/base.html' %}
+
+{% block aba %}cadastro de tarefas{% endblock %}
+
+{% block titulo %}Cadastro de tarefas{% endblock %}
+
+{% block conteudo %}
+
+<h3>Insira as suas tarefas</h3>
+<p class="lead">Descreva com pequenos detalhes e depois salve!</p>
+<hr>
+
+<form action="{% url 'lancar' %}" method="POST" class="needs-validation" novalidate>
+    {% csrf_token %}
+    
+    <div class="row mb-3">
+        <label for="userName" class="col-sm-2 col-form-label">Nome:</label>
+        <div class="col-sm-10">
+            <p class="form-control-plaintext" id="userName" style="font-weight:bold;">{{ user.first_name }}</p>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="disciplinaName" class="col-sm-2 col-form-label">Tarefa:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="disciplinaName" name="disciplina" required>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="notaAtividades" class="col-sm-2 col-form-label">Data atual:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="notaAtividades" name="nota_atividades" required>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="notaTrabalho" class="col-sm-2 col-form-label">Data final:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="notaTrabalho" name="nota_trabalho" required>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="notaProva" class="col-sm-2 col-form-label">Obeservações:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="notaProva" name="nota_prova" required>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-sm-12 text-center">
+            <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}

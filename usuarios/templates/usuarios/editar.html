@@ -1,0 +1,60 @@
+{% extends 'usuarios/base.html' %}
+
+{% block aba %}Editar Tarefas{% endblock %}
+
+{% block titulo %}Editar Tarefas{% endblock %}
+
+{% block conteudo %}
+
+<h3>Edite a tarefa selecionada</h3>
+<p class="lead">Verifique as informações cadastradas e faça as devidas alterações.</p>
+<hr>
+
+<form action="{% url 'editar' lista_notas.pk %}" method="POST" class="needs-validation" novalidate>
+    {% csrf_token %}
+    
+    <div class="row mb-3">
+        <label for="userName" class="col-sm-2 col-form-label">Nome:</label>
+        <div class="col-sm-10">
+            <p class="form-control-plaintext" id="userName" style="font-weight:bold;">{{ user.first_name }}</p>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="disciplinaName" class="col-sm-2 col-form-label">Tarefa:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="disciplinaName" name="disciplina" value="{{ lista_notas.disciplina }}" required>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="notaAtividades" class="col-sm-2 col-form-label">Data atual:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="notaAtividades" name="nota_atividades" value="{{ lista_notas.nota_atividades }}" required>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="notaTrabalho" class="col-sm-2 col-form-label">Data limite:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="notaTrabalho" name="nota_trabalho" value="{{ lista_notas.nota_trabalho }}" required>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="notaProva" class="col-sm-2 col-form-label">Observações:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="notaProva" name="nota_prova" value="{{ lista_notas.nota_prova }}" required>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-sm-12 text-center">
+            <button type="submit" class="btn btn-success btn-sm">Atualizar</button>
+            <a href="{% url 'alterar' %}" class="btn btn-danger btn-sm">Voltar</a>
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}

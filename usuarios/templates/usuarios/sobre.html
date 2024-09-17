@@ -1,0 +1,15 @@
+{% extends 'usuarios/base.html' %}
+
+{% block aba %}Sobre{% endblock %}
+
+{% block titulo %}Uma breve explicação...{% endblock %}
+
+{% block conteudo %}
+
+{% csrf_token %}
+    <div class="text-center my-5">
+        <h2 class="fw-bold">Sobre nós...</h2>
+        <p class="lead">O TaskNow é um software baseado nos famosos post-it, onde você descreve de forma sucinta alguma coisa.</p>
+        
+    </div>
+{% endblock %}
